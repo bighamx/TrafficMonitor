@@ -10,6 +10,10 @@
 
 已在 Windows 11 build 26300 上实测左右两侧的 48/160 像素布局。当前提供标准版 x64，运行需要管理员权限。[下载本 Fork 的版本](https://github.com/bighamx/TrafficMonitor/releases/tag/V1.86-win11-side.1)；[查看提交给上游的 PR](https://github.com/zhongyang219/TrafficMonitor/pull/2421)。
 
+### 可选：现代图标分支
+
+[现代图标分支](https://github.com/bighamx/TrafficMonitor/tree/win11-side-modern-icons)在上述侧边任务栏适配基础上，使用 [#2382](https://github.com/zhongyang219/TrafficMonitor/issues/2382) 分享的资源替换了 26 组程序、通知区和菜单图标；master 分支保留原版图标。可查看[原版图标拼图](https://github.com/bighamx/TrafficMonitor/blob/win11-side-modern-icons/Screenshots/icon-comparison/original-icons.png)与[现代图标拼图](https://github.com/bighamx/TrafficMonitor/blob/win11-side-modern-icons/Screenshots/icon-comparison/modern-icons.png)，或[下载现代图标预发布版](https://github.com/bighamx/TrafficMonitor/releases/tag/V1.86-win11-side-modern-icons.1)。
+
 [![Badge](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg?style=flat-square)](https://996.icu/#/en_US)
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![Upstream Release CI](https://img.shields.io/github/actions/workflow/status/zhongyang219/TrafficMonitor/main.yml?branch=master&label=Upstream%20Release%20CI&logo=github&style=flat-square)](https://github.com/zhongyang219/TrafficMonitor/actions?query=workflow:"Release+CI")

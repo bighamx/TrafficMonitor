@@ -10,6 +10,10 @@ This fork is based on [TrafficMonitor](https://github.com/zhongyang219/TrafficMo
 
 The 48 px and 160 px layouts were tested on both sides in Windows 11 build 26300. This release is the standard x64 edition and requires administrator privileges. [Download this fork's release](https://github.com/bighamx/TrafficMonitor/releases/tag/V1.86-win11-side.1) or [review the upstream PR](https://github.com/zhongyang219/TrafficMonitor/pull/2421).
 
+### Optional: modern-icons branch
+
+The [modern-icons branch](https://github.com/bighamx/TrafficMonitor/tree/win11-side-modern-icons) keeps the side-taskbar support and replaces 26 app, notification-area, and menu icon groups with resources shared in [#2382](https://github.com/zhongyang219/TrafficMonitor/issues/2382). The master branch retains the original icons. Compare the [original icon sheet](https://github.com/bighamx/TrafficMonitor/blob/win11-side-modern-icons/Screenshots/icon-comparison/original-icons.png) with the [modern icon sheet](https://github.com/bighamx/TrafficMonitor/blob/win11-side-modern-icons/Screenshots/icon-comparison/modern-icons.png), or [download the modern-icons prerelease](https://github.com/bighamx/TrafficMonitor/releases/tag/V1.86-win11-side-modern-icons.1).
+
 [![Badge](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg?style=flat-square)](https://996.icu/#/en_US)
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![Upstream Release CI](https://img.shields.io/github/actions/workflow/status/zhongyang219/TrafficMonitor/main.yml?branch=master&label=Upstream%20Release%20CI&logo=github&style=flat-square)](https://github.com/zhongyang219/TrafficMonitor/actions?query=workflow:"Release+CI")
