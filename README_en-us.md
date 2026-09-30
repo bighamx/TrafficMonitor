@@ -1,9 +1,19 @@
 **[简体中文](./README.md) | English**
 
+## Added in this fork: Windows 11 side taskbars
+
+This fork is based on [TrafficMonitor](https://github.com/zhongyang219/TrafficMonitor) V1.86. It adds support for the native Windows 11 taskbar on the left or right edge of the screen:
+
+- The monitor recalculates its size and position when the taskbar moves or changes width, placing it above the notification area.
+- On narrow side taskbars (about 48 px), upload and download use compact single-line text in two stacked rows.
+- On wider side taskbars (about 160 px), full text remains available. The Horizontal Arrange option places items in one row when they fit.
+
+The 48 px and 160 px layouts were tested on both sides in Windows 11 build 26300. This release is the standard x64 edition and requires administrator privileges. [Download this fork's release](https://github.com/bighamx/TrafficMonitor/releases/tag/V1.86-win11-side.1) or [review the upstream PR](https://github.com/zhongyang219/TrafficMonitor/pull/2421).
+
 [![Badge](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg?style=flat-square)](https://996.icu/#/en_US)
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongyang219/TrafficMonitor/main.yml?branch=master&label=Release%20CI&logo=github&style=flat-square)](https://github.com/zhongyang219/TrafficMonitor/actions?query=workflow:"Release+CI")
-[![GitHub release](https://img.shields.io/github/release/zhongyang219/TrafficMonitor.svg?style=flat-square)](https://github.com/zhongyang219/TrafficMonitor/releases/latest)
+[![Upstream Release CI](https://img.shields.io/github/actions/workflow/status/zhongyang219/TrafficMonitor/main.yml?branch=master&label=Upstream%20Release%20CI&logo=github&style=flat-square)](https://github.com/zhongyang219/TrafficMonitor/actions?query=workflow:"Release+CI")
+[![Fork release](https://img.shields.io/github/release/bighamx/TrafficMonitor.svg?style=flat-square)](https://github.com/bighamx/TrafficMonitor/releases/latest)
 
 <a href="https://hellogithub.com/repository/5ef48af2b2794d4798b17d6539ec7305" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=5ef48af2b2794d4798b17d6539ec7305&claim_uid=CeVqou2T1dIvfQP" alt="Featured｜HelloGitHub" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
@@ -13,7 +23,7 @@ TrafficMonitor is a network monitoring software with floating window feature for
 
 # Related Links
 
-Please [click here](https://github.com/zhongyang219/TrafficMonitor/releases/latest) to download the latest version of TrafficMonitor. 
+Please [click here](https://github.com/zhongyang219/TrafficMonitor/releases/latest) to download the latest upstream version of TrafficMonitor.
 
 Alternate link: Download from [Baidu Netdisk](https://pan.baidu.com/s/15PMt7s-ASpyDwtS__4cUhg). Access code: `ou0m`  
 

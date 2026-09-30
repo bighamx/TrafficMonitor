@@ -1,9 +1,19 @@
 **简体中文 | [English](./README_en-us.md)**
 
+## 本 Fork 的额外功能：Windows 11 侧边任务栏
+
+本仓库基于 [原版 TrafficMonitor](https://github.com/zhongyang219/TrafficMonitor) V1.86，增加了 Windows 11 原生任务栏位于屏幕左侧或右侧时的显示支持：
+
+- 任务栏切换方向或改变宽度时，监控窗口会重新计算尺寸和位置，显示在通知区域上方。
+- 约 48 像素的窄侧边任务栏使用紧凑的上传、下载单行文字，两个项目上下排列。
+- 约 160 像素的宽侧边任务栏保留完整文本；开启“水平排列”且空间足够时，项目可同排显示。
+
+已在 Windows 11 build 26300 上实测左右两侧的 48/160 像素布局。当前提供标准版 x64，运行需要管理员权限。[下载本 Fork 的版本](https://github.com/bighamx/TrafficMonitor/releases/tag/V1.86-win11-side.1)；[查看提交给上游的 PR](https://github.com/zhongyang219/TrafficMonitor/pull/2421)。
+
 [![Badge](https://img.shields.io/badge/link-996.icu-%23FF4D5B.svg?style=flat-square)](https://996.icu/#/en_US)
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/zhongyang219/TrafficMonitor/main.yml?branch=master&label=Release%20CI&logo=github&style=flat-square)](https://github.com/zhongyang219/TrafficMonitor/actions?query=workflow:"Release+CI")
-[![GitHub release](https://img.shields.io/github/release/zhongyang219/TrafficMonitor.svg?style=flat-square)](https://github.com/zhongyang219/TrafficMonitor/releases/latest)
+[![Upstream Release CI](https://img.shields.io/github/actions/workflow/status/zhongyang219/TrafficMonitor/main.yml?branch=master&label=Upstream%20Release%20CI&logo=github&style=flat-square)](https://github.com/zhongyang219/TrafficMonitor/actions?query=workflow:"Release+CI")
+[![Fork release](https://img.shields.io/github/release/bighamx/TrafficMonitor.svg?style=flat-square)](https://github.com/bighamx/TrafficMonitor/releases/latest)
 
 <a href="https://hellogithub.com/repository/5ef48af2b2794d4798b17d6539ec7305" target="_blank"><img src="https://api.hellogithub.com/v1/widgets/recommend.svg?rid=5ef48af2b2794d4798b17d6539ec7305&claim_uid=CeVqou2T1dIvfQP" alt="Featured｜HelloGitHub" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
@@ -13,7 +23,7 @@ Traffic Monitor是一款用于Windows平台的网速监控悬浮窗软件，可�
 
 # 相关链接：
 
-请[点击此处](https://github.com/zhongyang219/TrafficMonitor/releases/latest)下载TrafficMonitor的最新版本。
+请[点击此处](https://github.com/zhongyang219/TrafficMonitor/releases/latest)下载原版 TrafficMonitor 的最新版本。
 
 备用链接：[百度网盘下载](https://pan.baidu.com/s/15PMt7s-ASpyDwtS__4cUhg) 提取码：`ou0m`
 
