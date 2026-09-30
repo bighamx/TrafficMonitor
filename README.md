@@ -1,5 +1,11 @@
 **简体中文 | [English](./README_en-us.md)**
 
+## 本分支：现代图标版
+
+此分支以本 Fork 的 Windows 11 侧边任务栏适配版为基础，替换了程序、通知区和菜单中的 26 组内置图标。图标来自 [@szline5 在上游 issue #2382 分享的资源](https://github.com/zhongyang219/TrafficMonitor/issues/2382)，其中部分图标引用 Windows 系统图标。本分支将图标提取为源码中的 `.ico` 文件并重新编译，没有包含附件中的 Resource Hacker 或修改后的 exe。
+
+[下载现代图标版 Release](https://github.com/bighamx/TrafficMonitor/releases/tag/V1.86-win11-side-modern-icons.1)；如需原版图标，请使用[侧边任务栏适配版](https://github.com/bighamx/TrafficMonitor/releases/tag/V1.86-win11-side.1)。
+
 ## 本 Fork 的额外功能：Windows 11 侧边任务栏
 
 本仓库基于 [原版 TrafficMonitor](https://github.com/zhongyang219/TrafficMonitor) V1.86，增加了 Windows 11 原生任务栏位于屏幕左侧或右侧时的显示支持：
