@@ -6,6 +6,14 @@
 
 [下载现代图标版 Release](https://github.com/bighamx/TrafficMonitor/releases/tag/V1.86-win11-side-modern-icons.1)；如需原版图标，请使用[侧边任务栏适配版](https://github.com/bighamx/TrafficMonitor/releases/tag/V1.86-win11-side.1)。
 
+### 图标对比
+
+两张拼图都按图下的资源 ID 顺序排列，便于逐项对照；图片是图标资源预览，并非软件界面截图。
+
+| 原版图标 | 现代图标 |
+| --- | --- |
+| ![原版图标拼图](./Screenshots/icon-comparison/original-icons.png) | ![现代图标拼图](./Screenshots/icon-comparison/modern-icons.png) |
+
 ## 本 Fork 的额外功能：Windows 11 侧边任务栏
 
 本仓库基于 [原版 TrafficMonitor](https://github.com/zhongyang219/TrafficMonitor) V1.86，增加了 Windows 11 原生任务栏位于屏幕左侧或右侧时的显示支持：

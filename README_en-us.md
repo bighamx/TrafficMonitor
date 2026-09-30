@@ -6,6 +6,14 @@ This branch builds on this fork's Windows 11 side taskbar version and replaces 2
 
 [Download the modern-icons release](https://github.com/bighamx/TrafficMonitor/releases/tag/V1.86-win11-side-modern-icons.1), or use the [side-taskbar release with the original icons](https://github.com/bighamx/TrafficMonitor/releases/tag/V1.86-win11-side.1).
 
+### Icon comparison
+
+Both sheets use the resource IDs shown below each icon for a direct comparison. They preview the icon resources, not the app's windows.
+
+| Original icons | Modern icons |
+| --- | --- |
+| ![Original icon sheet](./Screenshots/icon-comparison/original-icons.png) | ![Modern icon sheet](./Screenshots/icon-comparison/modern-icons.png) |
+
 ## Added in this fork: Windows 11 side taskbars
 
 This fork is based on [TrafficMonitor](https://github.com/zhongyang219/TrafficMonitor) V1.86. It adds support for the native Windows 11 taskbar on the left or right edge of the screen:
