@@ -4,6 +4,14 @@
 
 void CWin11TaskbarDlg::AdjustTaskbarWndPos(bool force_adjust)
 {
+    //显示器或远程桌面会话变化时，Explorer可能重新创建这些子窗口。
+    const HWND notify = ::FindWindowEx(m_hTaskbar, nullptr, L"TrayNotifyWnd", nullptr);
+    const HWND start = ::FindWindowEx(m_hTaskbar, nullptr, L"Start", nullptr);
+    force_adjust = force_adjust || notify != m_hNotify || start != m_hStart;
+    m_hNotify = notify;
+    m_hStart = start;
+    const CRect previous_notify{ m_rcNotify };
+    const CRect previous_start{ m_rcStart };
     m_rcNotify.SetRectEmpty();
     m_rcStart.SetRectEmpty();
     if (::GetWindowRect(m_hNotify, m_rcNotify))
@@ -12,18 +20,18 @@ void CWin11TaskbarDlg::AdjustTaskbarWndPos(bool force_adjust)
         m_rcStart.OffsetRect(-m_rcTaskbar.left, -m_rcTaskbar.top);
 
     const bool horizontal = m_taskbar_on_top_or_bottom;
-    const int notify_size = horizontal ? m_rcNotify.Width() : m_rcNotify.Height();
-    const int notify_pos = horizontal ? m_rcNotify.left : m_rcNotify.top;
-    const int start_pos = horizontal ? m_rcStart.left : m_rcStart.top;
-
+    //DPI切换也可能由系统直接移动子窗口，缓存的目标坐标不一定同步变化。
+    CRect actual_rect;
+    if (::GetWindowRect(GetSafeHwnd(), actual_rect))
+    {
+        ::MapWindowPoints(nullptr, m_hTaskbar, reinterpret_cast<LPPOINT>(&actual_rect), 2);
+        force_adjust = force_adjust || actual_rect != m_rect;
+    }
     //设置窗口大小
     m_rect.right = m_rect.left + m_window_width;
     m_rect.bottom = m_rect.top + m_window_height;
-    if (force_adjust || notify_size != m_last_notify_size || notify_pos != m_last_notify_pos || start_pos != m_last_start_pos)
+    if (force_adjust || m_rcNotify != previous_notify || m_rcStart != previous_start)
     {
-        m_last_notify_size = notify_size;
-        m_last_notify_pos = notify_pos;
-        m_last_start_pos = start_pos;
         if (!horizontal)
         {
             //竖向任务栏的开始区域在上方，通知区域在下方；坐标均相对于任务栏窗口。
@@ -100,11 +108,16 @@ void CWin11TaskbarDlg::AdjustTaskbarWndPos(bool force_adjust)
         //if (m_rcTaskbar.Width() > m_rect.Width() && m_rect.right > m_rcTaskbar.Width())
         //    m_rect.MoveToX(m_rcTaskbar.Width() - m_rect.Width());
 
-        //设置任务栏窗口的垂直位置
-        //注：这里加上(m_rcTaskbar.Height() - rcStart.Height())用于修正Windows11 build 22621版本后触屏设备任务栏窗口位置不正确的问题。
-        //在这种情况下m_rcTaskbar的高度要大于m_rcBar的高度，正常情况下，它们的高度相同
-        //但是当任务栏上没有任何图标时，m_rcBar的高度会变为0，因此使用rcStart代替
-        m_rect.MoveToY((m_rcStart.Height() - m_rect.Height()) / 2 + (m_rcTaskbar.Height() - m_rcStart.Height()) + DPI(theApp.m_taskbar_data.window_offset_top));
+        //触屏任务栏可能有额外的顶部区域，优先在开始按钮所在区域居中。
+        //会话切换时开始按钮可能暂时不存在或仍保留旧坐标，此时在整个任务栏内居中。
+        int content_top = 0;
+        int content_height = m_rcTaskbar.Height();
+        if (!m_rcStart.IsRectEmpty() && m_rcStart.top >= 0 && m_rcStart.bottom <= m_rcTaskbar.Height())
+        {
+            content_top = m_rcStart.top;
+            content_height = m_rcStart.Height();
+        }
+        m_rect.MoveToY(content_top + (content_height - m_rect.Height()) / 2 + DPI(theApp.m_taskbar_data.window_offset_top));
         ////确保垂直方向不超出屏幕边界
         //if (m_rect.top < 0)
         //    m_rect.MoveToY(0);

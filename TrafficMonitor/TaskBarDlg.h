@@ -58,21 +58,15 @@ public:
         template <class HandlerFunc>
         void operator()(CTaskBarDlg& ref_taskbar_window, HandlerFunc handler)
         {
+            UINT dpi_x{}, dpi_y{};
             bool rtn = theApp.DPIFromRect(ref_taskbar_window.GetRectForDpiCheck(), &dpi_x, &dpi_y);
             //只取dpi_x作为程序dpi
-            if (rtn && (dpi_x != buffered_dpi_x || dpi_y != buffered_dpi_y))
+            if (rtn && dpi_x != 0 && dpi_x != ref_taskbar_window.GetDPI())
             {
-                //更新缓存的数据
-                buffered_dpi_x = dpi_x;
-                buffered_dpi_y = dpi_y;
                 //调用用户自定义处理方法
                 handler(dpi_x, dpi_y);
             }
         }
-
-    private:
-        static UINT buffered_dpi_x, buffered_dpi_y;
-        static UINT dpi_x, dpi_y;
     } CheckWindowMonitorDPIAndHandle;
 
     // 对话框数据
