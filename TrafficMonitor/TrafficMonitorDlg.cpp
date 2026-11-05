@@ -2907,6 +2907,8 @@ LRESULT CTrafficMonitorDlg::OnDisplaychange(WPARAM wParam, LPARAM lParam)
 {
     GetScreenSize();
     CheckWindowPos(true);
+    if (IsTaskbarWndValid())
+        m_tBarDlg->WidthChanged();  //由任务栏定时器在刷新系统布局后重新计算位置。
     return 0;
 }
 

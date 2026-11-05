@@ -482,15 +482,13 @@ bool CTaskBarDlg::AdjustWindowPos(bool force_adjust)
 
     const CRect previous_taskbar_rect{ m_rcTaskbar };
     ::GetWindowRect(m_hTaskbar, m_rcTaskbar);   //获得任务栏的矩形区域
-    const bool win11_taskbar_size_changed = theApp.IsWindows11Taskbar() &&
-        (m_rcTaskbar.Width() != previous_taskbar_rect.Width() || m_rcTaskbar.Height() != previous_taskbar_rect.Height());
+    const bool win11_taskbar_rect_changed = theApp.IsWindows11Taskbar() && m_rcTaskbar != previous_taskbar_rect;
 
-    static bool last_taskbar_on_top_or_bottom;
+    const bool last_taskbar_on_top_or_bottom = m_taskbar_on_top_or_bottom;
     CheckTaskbarOnTopOrBottom();
-    if (force_adjust || win11_taskbar_size_changed || m_taskbar_on_top_or_bottom != last_taskbar_on_top_or_bottom)
+    if (force_adjust || win11_taskbar_rect_changed || m_taskbar_on_top_or_bottom != last_taskbar_on_top_or_bottom)
     {
         CalculateWindowSize();
-        last_taskbar_on_top_or_bottom = m_taskbar_on_top_or_bottom;
         force_adjust = true;
     }
 
@@ -584,7 +582,11 @@ UINT CTaskBarDlg::GetDPI() const
 
 void CTaskBarDlg::SetDPI(UINT dpi)
 {
-    m_taskbar_dpi = dpi;
+    if (dpi != 0 && dpi != m_taskbar_dpi)
+    {
+        m_taskbar_dpi = dpi;
+        WidthChanged();  //即使字体尺寸取整后不变，也要按新DPI重新定位窗口。
+    }
 }
 
 UINT CTaskBarDlg::DPI(UINT pixel) const
@@ -611,11 +613,6 @@ void CTaskBarDlg::DPI(CRect& rect) const
 }
 
 CTaskBarDlg::ClassCheckWindowMonitorDPIAndHandle CTaskBarDlg::CheckWindowMonitorDPIAndHandle{};
-
-UINT CTaskBarDlg::ClassCheckWindowMonitorDPIAndHandle::buffered_dpi_x{0};
-UINT CTaskBarDlg::ClassCheckWindowMonitorDPIAndHandle::buffered_dpi_y{0};
-UINT CTaskBarDlg::ClassCheckWindowMonitorDPIAndHandle::dpi_x{0};
-UINT CTaskBarDlg::ClassCheckWindowMonitorDPIAndHandle::dpi_y{0};
 
 HWND CTaskBarDlg::FindTaskbarHandle(bool& is_scendary_display)
 {
